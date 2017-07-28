@@ -117,6 +117,6 @@ function isFocused(selectorString){
 
 //getFocusedElement()
 function getFocuesdElement(){
-    
+     
     return document.activeElement;
 }
