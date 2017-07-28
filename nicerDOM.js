@@ -102,3 +102,21 @@ function isThe(selectorString){
         return outerElement.contains(innerElement);
     }
 }
+
+//focus('#my_input')
+function focus(selectorString){
+
+    document.querySelector('#some_input_id').focus();
+}
+
+//isFocused('#my_input')
+function isFocused(selectorString){
+
+    return (document.querySelector(selectorString) === document.activeElement);
+}
+
+//getFocusedElement()
+function getFocuesdElement(){
+    
+    return document.activeElement;
+}
