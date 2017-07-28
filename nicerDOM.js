@@ -1,6 +1,7 @@
 //addElement(<tag name>).innerText(<string>).before(<css selector>);
 
 //example:
+
 //addElement('li').innerText('amazing text').before('ul li#blah');
 //addElement('li').innerText('amazing text').after('ul li#blah');
 //addElement('li').innerText('amazing text').replaceWith('ul li#blah');
