@@ -80,3 +80,25 @@ function duplicateElement(selectorString){
     let duplicated = document.querySelector(selectorString).cloneNode(true);
     return duplicated;
 }
+
+
+//contain function
+
+//example:
+//console.log(isThe('#head').containedInside('#divv'));
+
+function isThe(selectorString){
+
+    let innerElement = document.querySelector(selectorString);
+
+    return {
+        containedInside: containedInside
+    };
+
+    function containedInside(anotherSelecorString){
+        
+        let outerElement = document.querySelector(anotherSelecorString);
+
+        return outerElement.contains(innerElement);
+    }
+}
