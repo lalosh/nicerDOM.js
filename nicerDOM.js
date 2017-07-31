@@ -211,3 +211,108 @@ function setScrollPositionFromLeft(selectorString, newValue){
     let element = document.querySelector(selectorString);
     element.scrollLeft = newValue;
 }
+
+function scrollInto(selectorString, childNumber){
+
+    let element = document.querySelector(selectorString).children[childNumber];
+    element.scrollIntoView(true);
+}
+
+function addInlineStyle(selectorString){
+
+    if( !(typeof selectorString === "string") ) return null;
+
+    let element = document.querySelector(selectorString);
+    let style = element.style;
+
+    return function (property){
+
+        if( !(typeof property === "string") ) return null;
+        
+        return function (value){
+    
+            if( !(typeof value === "string") ) return null;
+            style.setProperty(property, value);
+        }
+    }
+}
+
+function addInlineStyleString(selectorString){
+
+    if( !(typeof selectorString === "string") ) return null;
+
+    let element = document.querySelector(selectorString);
+    let style = element.style;
+
+    return function(cssString){
+        style.cssText = cssString;
+    }
+}
+function getInlineStyle(selectorString){
+
+    if( !(typeof selectorString === "string") ) return null;
+    
+    let element = document.querySelector(selectorString);
+    let style = element.style;
+
+    return function(property){
+
+        if( !(typeof property === "string") ) return null;        
+        return style.getPropertyValue(property);
+    }
+}
+
+function removeInlineStyle(selectorString){
+
+    if( !(typeof selectorString === "string") ) return null;
+       
+    let element = document.querySelector(selectorString);
+    let style = element.style;
+
+    return function(property){
+        style.removeProperty(property);
+    }
+}
+
+function removeAllInlineStyle(selectorString){
+
+    if( !(typeof selectorString === "string") ) return null;
+       
+    let element = document.querySelector(selectorString);
+    element.removeAttribute("style");
+}
+
+function getStyleValue(selectorString){
+    
+    if( !(typeof selectorString === "string") ) return null;
+       
+    let element = document.querySelector(selectorString);
+    let style = window.getComputedStyle(element);
+
+    return function(property){
+
+        if( !(typeof property === "string") ) return null;        
+        return style[property];
+    }
+}
+
+//to make a style by setting class or id
+function setClass(selectorString){
+   
+    if( !(typeof selectorString === "string") ) return null;
+    let element = document.querySelector(selectorString);
+
+    return function(className){
+        element.classList.add(className);
+    }
+}
+
+function setId(selectorString){
+
+    if( !(typeof selectorString === "string") ) return null;
+    let element = document.querySelector(selectorString);
+    
+    return function(newId){
+        element.setAttribute('id',newId);
+    }
+}
