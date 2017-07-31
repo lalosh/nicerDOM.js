@@ -32,16 +32,16 @@ function addElement(type){
 
     function before(selectorString){
         let query = document.querySelector(selectorString);
-        
+
         if(query != null)
              query.insertAdjacentHTML('beforebegin', element.outerHTML);
-   
+
     }
 
     function after(selectorString){
         let query = document.querySelector(selectorString);
-        
-        if(query != null)        
+
+        if(query != null)
             query.insertAdjacentHTML('afterend', element.outerHTML);
     }
 
@@ -52,7 +52,7 @@ function addElement(type){
             query.parentNode.replaceChild(element, query);
 
     }
-}  
+}
 
 //removeElement(<css selector>);
 
@@ -64,7 +64,7 @@ function removeElement(selectorString){
     if(!(typeof selectorString === 'string')) return null;
 
     let element = document.querySelector(selectorString);
-    
+
     if(element != null)
         element.parentNode.removeChild(element);
 }
@@ -96,7 +96,7 @@ function isThe(selectorString){
     };
 
     function containedInside(anotherSelecorString){
-        
+
         let outerElement = document.querySelector(anotherSelecorString);
 
         return outerElement.contains(innerElement);
@@ -117,6 +117,97 @@ function isFocused(selectorString){
 
 //getFocusedElement()
 function getFocuesdElement(){
-     
+
     return document.activeElement;
+}
+
+function getOffsetInfo(selectorString){
+
+    let element = document.querySelector(selectorString);
+
+
+    console.log("offet Left",element.offsetLeft);
+    console.log("offset Top", element.offsetTop);
+    console.log("Parent:", element.offsetParent);
+}
+
+function getAllPositionsInfo(selectorString){
+
+    let element = document.querySelector(selectorString);
+    let info = element.getBoundingClientRect();
+
+    console.log("top", info.top);
+    console.log("right", info.right);
+    console.log("bottom", info.bottom);
+    console.log("left", info.left);
+}
+
+function getWidth(selectorString){
+
+    let element = document.querySelector(selectorString);
+    let info = element.getBoundingClientRect();
+    return info.width;
+}
+
+function getHeight(selectorString){
+
+    let element = document.querySelector(selectorString);
+    let info = element.getBoundingClientRect();
+    return info.height;
+}
+
+function getWidthWithoutMargin(selectorString){
+
+  let element = document.querySelector(selectorString);
+  return element.clientWidth;
+}
+
+function getHeightWithoutMargin(selectorString){
+
+  let element = document.querySelector(selectorString);
+  return element.clientHeight;
+}
+
+function getElementAtPoint(x,y){
+    return (document.elementFromPoint(x,y));
+}
+
+//how much tall is the scroll bar
+function getScrollHeight(selectorString){
+    
+    let element = document.querySelector(selectorString);
+    return element.scrollHeight;
+}
+
+function getScrollWidth(selectorString){
+    
+    let element = document.querySelector(selectorString);
+    return element.scrollWidth;
+}
+
+
+//position of scrolling
+//position of current scroll bar
+function getScrollPositionFromTop(selectorString){
+    
+    let element = document.querySelector(selectorString);
+    return element.scrollTop;
+}
+
+function getScrollPositionFromLeft(selectorString){
+    
+    let element = document.querySelector(selectorString);
+    return element.scrollLeft;
+}
+
+function setScrollPositionFromTop(selectorString, newValue){
+    
+    let element = document.querySelector(selectorString);
+    element.scrollTop = newValue;
+}
+
+function setScrollPositionFromLeft(selectorString, newValue){
+    
+    let element = document.querySelector(selectorString);
+    element.scrollLeft = newValue;
 }
